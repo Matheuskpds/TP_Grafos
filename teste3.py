@@ -26,19 +26,11 @@ class GrafoPonderado:
         nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_color='red', font_size=10)
         plt.show()
 
-    # Adicione mais métodos conforme necessário
 
-G = nx.Graph()
-G.add_edge(1, 2, weight=5)
-G.add_edge(2, 3, weight=3)
-G.add_edge(1, 3, weight=7)
-
+G = nx.read_graphml("TP_Grafos/teste2.graphml")
 Grafo = GrafoPonderado(G)
 
-ordem = Grafo.calcular_ordem()
-print("Ordem do grafo:", ordem)
-
-menor_caminho = Grafo.encontrar_menor_caminho(1, 3)
-print("Menor caminho:", menor_caminho)
-
-Grafo.printar_grafo()
+if nx.is_weighted(G):
+    print("O grafo é ponderado.")
+else:
+    print("O grafo não é ponderado.")
