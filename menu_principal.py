@@ -23,20 +23,28 @@ def menu():
         os.system('cls')
 
         if resposta == 1:
-            Grafo = nx.read_graphml("TP_Grafos/teste.graphml")
+            Grafo = nx.read_graphml("grafo.graphml")
 
         if resposta == 2:
             pos = nx.spring_layout(Grafo)  # Layout do grafo
             if nx.is_weighted(Grafo):
-                edge_labels = {(u, v): d.get('weight', '') for u, v, d in Grafo.edges(data=True)}
+                edge_labels = {(u, v): Grafo.edges[u, v]['weight'] for u, v, d in Grafo.edges(data=True)}
             else:
                 edge_labels = {}
             nx.draw(Grafo, pos, with_labels=True, node_size=700, node_color="skyblue")
             nx.draw_networkx_edge_labels(Grafo, pos, edge_labels=edge_labels, font_color='red', font_size=10)
             plt.show()
-
-            
-
+        if resposta == 3:
+            print("A ordem do grafo é: ", nx.number_of_nodes(Grafo))
+        if resposta == 4:
+            print("O tamanho do grafo é: ", (nx.number_of_edges(Grafo) + nx.number_of_nodes(Grafo)))
+        if resposta == 5: 
+            vertice = str(input("Digite um vértice para saber seus vizinhos: "))
+            print("O(s) vizinho(s) do vértice " + vertice + " são: ", list(nx.neighbors(Grafo, vertice)))
+        if resposta == 6:
+            vertice = str(input("Digite um vértice para saber o seu grau: "))
+            print("O grau do vértice " + vertice + " é: ", nx.degree(Grafo, vertice))
+        
         if resposta == 15:
             print("Encerrando programa...")
             loop = False
