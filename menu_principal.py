@@ -1,7 +1,7 @@
 import networkx as nx
 import matplotlib.pyplot as plt  #visualizar grafofrom classe_grafo import GrafoPonderado
 import os
-import pydot
+#import pydot
 from networkx.drawing.nx_pydot import graphviz_layout
 
 def menu():
@@ -26,7 +26,7 @@ def menu():
         os.system('cls')
 
         if resposta == 1:
-            Grafo = nx.read_graphml("grafo.graphml")
+            Grafo = nx.read_graphml("TP_Grafos/grafo.graphml")
 
         if resposta == 2:
             pos = nx.spring_layout(Grafo)  # Layout do grafo
@@ -65,7 +65,7 @@ def menu():
             arestas_fora_arvore = [(u, v) for u, v in Grafo.edges() if (u, v) not in BuscaLargura.edges()]
             print("Sequencia de vértices visitados na busca em largura: ", list(BuscaLargura))
             print("Arestas que não fazem parte da árvore de busca em largura: ", arestas_fora_arvore)
-            nx.write_graphml(BuscaLargura, "Arvore_Busca_em_Largura.graphml")
+            nx.write_graphml(BuscaLargura, "TP_Grafos/Arvore_Busca_em_Largura.graphml")
 
         
         if resposta == 15:
