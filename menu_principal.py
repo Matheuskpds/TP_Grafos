@@ -1,8 +1,6 @@
 import networkx as nx
 import matplotlib.pyplot as plt  #visualizar grafofrom classe_grafo import GrafoPonderado
 import os
-#import pydot
-from networkx.drawing.nx_pydot import graphviz_layout
 
 def menu():
     loop = True
@@ -26,7 +24,7 @@ def menu():
         os.system('cls')
 
         if resposta == 1:
-            Grafo = nx.read_graphml("TP_Grafos/grafo.graphml")
+            Grafo = nx.read_graphml("..\TP_Grafos\grafo.graphml")
 
         if resposta == 2:
             pos = nx.spring_layout(Grafo)  # Layout do grafo
@@ -66,8 +64,20 @@ def menu():
             print("Sequencia de vértices visitados na busca em largura: ", list(BuscaLargura))
             print("Arestas que não fazem parte da árvore de busca em largura: ", arestas_fora_arvore)
             nx.write_graphml(BuscaLargura, "TP_Grafos/Arvore_Busca_em_Largura.graphml")
-
-        
+        if resposta == 13:
+            resultados_dijkstra = dict(nx.all_pairs_dijkstra_path(Grafo))
+            for origem, destinos in resultados_dijkstra.items():
+                print(f"Distância de {origem} a:")
+                for destino, caminho in destinos.items():
+                    if origem != destino:
+                        distancia = sum(Grafo[u][v].get('weight', 1) for u, v in zip(caminho[:-1], caminho[1:]))
+                        print(f"{destino}: {caminho} com distância {distancia}")
+        if resposta == 14:
+            vertice = str(input("Digite um vértice para saber sua centralidade de proximidade: "))
+            distancias_minimas = nx.single_source_dijkstra_path_length(Grafo, vertice)
+            distanciaTotal = sum(distancias_minimas.values())
+            centralidade = (nx.number_of_nodes(Grafo) - 1) / distanciaTotal
+            print("A centralidade de proximidade do vértice " + vertice + f" é: {centralidade:.4f}")
         if resposta == 15:
             print("Encerrando programa...")
             loop = False
