@@ -1,6 +1,9 @@
 import networkx as nx
 import matplotlib.pyplot as plt  #visualizar grafofrom classe_grafo import GrafoPonderado
 import os
+import pydot
+from networkx.drawing.nx_pydot import graphviz_layout
+
 def menu():
     loop = True
     while(loop):
@@ -44,6 +47,26 @@ def menu():
         if resposta == 6:
             vertice = str(input("Digite um vértice para saber o seu grau: "))
             print("O grau do vértice " + vertice + " é: ", nx.degree(Grafo, vertice))
+        if resposta == 7:
+            seq_graus = [val for (node, val) in nx.degree(Grafo)]
+            print("A sequência de graus do grafo é: ", sorted(seq_graus, reverse=True))
+        if resposta == 8:
+            vertice = str(input("Digite um vértice para saber o sua excentricidade: "))
+            print("A excentricidade do vértice " + vertice + " é: ", nx.eccentricity(Grafo, vertice))
+        if resposta == 9:
+            print("O raio do grafo é: ", nx.radius(Grafo))
+        if resposta == 10:
+            print("O diâmetro do grafo é: ", nx.diameter(Grafo))
+        if resposta == 11:
+            print("O centro do grafo é: ", nx.center(Grafo))
+        if resposta == 12:
+            vertice = str(input("Digite um vértice para iniciar a busca em largura: "))
+            BuscaLargura = nx.bfs_tree(Grafo, vertice)
+            arestas_fora_arvore = [(u, v) for u, v in Grafo.edges() if (u, v) not in BuscaLargura.edges()]
+            print("Sequencia de vértices visitados na busca em largura: ", list(BuscaLargura))
+            print("Arestas que não fazem parte da árvore de busca em largura: ", arestas_fora_arvore)
+            nx.write_graphml(BuscaLargura, "Arvore_Busca_em_Largura.graphml")
+
         
         if resposta == 15:
             print("Encerrando programa...")
