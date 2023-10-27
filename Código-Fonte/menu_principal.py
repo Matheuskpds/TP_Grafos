@@ -27,7 +27,7 @@ def menu():
         if resposta == 1:
             print("Obs: O grafo precisa estar adicionado na no caminho TP_Grafos/Código-Fonte/Grafos/")
             Arquivo_Grafo = str(input("Digite o nome do arquivo do grafo: "))
-            G = nx.read_graphml("TP_Grafos/Código-Fonte/Grafos/" + Arquivo_Grafo)
+            G = nx.read_graphml("../TP_Grafos/Código-Fonte/Grafos/" + Arquivo_Grafo)
             Grafo = GrafoPonderado(G)
 
         if resposta == 2:
