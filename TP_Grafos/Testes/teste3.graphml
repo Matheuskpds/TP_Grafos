@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns">
+  <graph id="G" edgedefault="undirected">
+    <node id="1"/>
+    <node id="2"/>
+    <edge source="1" target="2">
+      <data key="weight">5</data>
+    </edge>
+  </graph>
+</graphml>
