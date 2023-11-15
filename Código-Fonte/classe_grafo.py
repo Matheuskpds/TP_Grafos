@@ -75,3 +75,23 @@ class GrafoPonderado:
         distanciaTotal = sum(distancias_minimas.values())
         centralidade = (nx.number_of_nodes(self.grafo) - 1) / distanciaTotal
         print("A centralidade de proximidade do vértice " + v + f" é: {centralidade:.4f}")
+
+    #def eh_ciclo(self):
+
+    #def menor_ciclo(self):
+
+    def arvore_geradora_minima(self):
+        Arvore_Geradora_Minima = nx.minimum_spanning_tree(self.grafo)
+        nx.write_graphml(Arvore_Geradora_Minima, "TP_Grafos/Código-Fonte/Grafos/Arvore_Geradora_Minima.graphml")
+        resposta = str(input("Deseja visualizar a árvore geradora mínima? (S/N)"))
+        if (resposta == 'S' or resposta == 's'):
+            Arvore_Geradora_Minima_Graphml = nx.read_graphml("TP_Grafos/Código-Fonte/Grafos/Arvore_Geradora_Minima.graphml")
+            if nx.is_weighted(Arvore_Geradora_Minima_Graphml):
+                self.printar_grafo(Arvore_Geradora_Minima_Graphml)
+            else:
+                nx.draw(Arvore_Geradora_Minima_Graphml, with_labels=True)
+                plt.show()
+
+    #def conjunto_estavel(self):
+
+    #def emparelhamento_maximo(self):

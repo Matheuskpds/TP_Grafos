@@ -20,14 +20,19 @@ def menu():
         print("12 - Busca em Lagura")
         print("13 - Distância e Caminho Mínimo")
         print("14 - Centralidade de Proximidade C de um vértice")
-        print("15 - Encerrar Programa")
+        print("15 - Verificar se o grafo eh um ciclo")
+        print("16 - Encontrar o menor ciclo do grafo")
+        print("17 - Árvore Geradora Mínima")
+        print("18 - Determinar um conjunto estável de vértices de um grafo por meio de uma heurística")
+        print("19 - Determinar Emparelhamento Máximo do Grafo")
+        print("20 - Encerrar Programa")
         resposta = int(input("Digite a opção desejada: "))
         os.system('cls')
 
         if resposta == 1:
             print("Obs: O grafo precisa estar adicionado na no caminho TP_Grafos/Código-Fonte/Grafos/")
             Arquivo_Grafo = str(input("Digite o nome do arquivo do grafo: "))
-            G = nx.read_graphml("../TP_Grafos/Código-Fonte/Grafos/" + Arquivo_Grafo)
+            G = nx.read_graphml("TP_Grafos/Código-Fonte/Grafos/" + Arquivo_Grafo)
             Grafo = GrafoPonderado(G)
 
         if resposta == 2:
@@ -61,13 +66,15 @@ def menu():
         if resposta == 14:
             vertice = str(input("Digite um vértice para saber sua centralidade de proximidade: "))
             Grafo.centralidade_proximidade(vertice)
-        if resposta == 15:
+        if resposta == 17:
+            Grafo.arvore_geradora_minima()
+        if resposta == 20:
             print("Encerrando programa...")
             loop = False
 
-        if(resposta > 15 or resposta < 1):
+        if(resposta > 20 or resposta < 1):
             print("Opção inválida, tente novamente!")
-        if(resposta != 15):
+        if(resposta != 20):
             aux = str(input("Aperte qualquer tecla para continuar... "))
             os.system('cls')
 
