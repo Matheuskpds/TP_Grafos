@@ -50,10 +50,10 @@ class GrafoPonderado:
         arestas_fora_arvore = [(u, v) for u, v in self.grafo.edges() if (u, v) not in BuscaLargura.edges()]
         print("Sequencia de vértices visitados na busca em largura: ", list(BuscaLargura))
         print("Arestas que não fazem parte da árvore de busca em largura: ", arestas_fora_arvore)
-        nx.write_graphml(BuscaLargura, "TP_Grafos/Código-Fonte/Grafos/Arvore_Busca_em_Largura.graphml")
+        nx.write_graphml(BuscaLargura, "Grafos/Arvore_Busca_em_Largura.graphml")
         resposta = str(input("Deseja visualizar a árvore de busca em largura? (S/N)"))
         if resposta == 'S' or resposta == 's':
-            Arvore_Busca_Largura = nx.read_graphml("TP_Grafos/Código-Fonte/Grafos/Arvore_Busca_em_Largura.graphml")
+            Arvore_Busca_Largura = nx.read_graphml("Grafos/Arvore_Busca_em_Largura.graphml")
             if nx.is_weighted(Arvore_Busca_Largura):
                 self.printar_grafo(Arvore_Busca_Largura)
             else:

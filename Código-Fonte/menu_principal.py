@@ -14,12 +14,12 @@ def menu():
         print("6 - Grau de um Vértice")
         print("7 - Sequência de Graus")
         print("8 - Excentricidade de um vértice")
+        print("14 - Centralidade de Proximidade C de um vértice")
         print("9 - Raio do Grafo")
         print("10 - Diâmetro do Grafo")
         print("11 - Centro do Grafo")
         print("12 - Busca em Lagura")
         print("13 - Distância e Caminho Mínimo")
-        print("14 - Centralidade de Proximidade C de um vértice")
         print("15 - Encerrar Programa")
         resposta = int(input("Digite a opção desejada: "))
         os.system('cls')
@@ -27,7 +27,7 @@ def menu():
         if resposta == 1:
             print("Obs: O grafo precisa estar adicionado na no caminho TP_Grafos/Código-Fonte/Grafos/")
             Arquivo_Grafo = str(input("Digite o nome do arquivo do grafo: "))
-            G = nx.read_graphml("../TP_Grafos/Código-Fonte/Grafos/" + Arquivo_Grafo)
+            G = nx.read_graphml("Grafos/" + Arquivo_Grafo)
             Grafo = GrafoPonderado(G)
 
         if resposta == 2:
