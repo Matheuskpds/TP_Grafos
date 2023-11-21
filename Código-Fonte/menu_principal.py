@@ -32,9 +32,8 @@ def menu():
         if resposta == 1:
             print("Obs: O grafo precisa estar adicionado na no caminho TP_Grafos/Código-Fonte/Grafos/")
             Arquivo_Grafo = str(input("Digite o nome do arquivo do grafo: "))
-            G = nx.read_graphml("TP_Grafos/Código-Fonte/Grafos/" + Arquivo_Grafo)
+            G = nx.read_graphml("../TP_Grafos/Código-Fonte/Grafos/" + Arquivo_Grafo)
             Grafo = GrafoPonderado(G)
-
         if resposta == 2:
             Grafo.printar_grafo(G)
         if resposta == 3:
@@ -68,10 +67,15 @@ def menu():
             Grafo.centralidade_proximidade(vertice)
         if resposta == 17:
             Grafo.arvore_geradora_minima()
+        if resposta == 18:
+            conjunto_independente, numero_independencia = Grafo.conjunto_estavel()
+            print("Conjunto Independente:", conjunto_independente)
+            print("Número de Independência:", numero_independencia)
+        if resposta == 19:
+            print("O emparelhamento máximo é formado pelas arestas:", Grafo.emparelhamento_maximo())
         if resposta == 20:
             print("Encerrando programa...")
             loop = False
-
         if(resposta > 20 or resposta < 1):
             print("Opção inválida, tente novamente!")
         if(resposta != 20):

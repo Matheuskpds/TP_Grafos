@@ -92,6 +92,23 @@ class GrafoPonderado:
                 nx.draw(Arvore_Geradora_Minima_Graphml, with_labels=True)
                 plt.show()
 
-    #def conjunto_estavel(self):
+    def conjunto_estavel(self):
+        # Inicializa os conjuntos
+        N = set(self.grafo.nodes())
+        S = set()
+        a = 0
 
-    #def emparelhamento_maximo(self):
+        while len(N) > 0:
+            xk = max(N, key=lambda x: self.grafo.degree(x))
+            neighbors = set([xk] + list(self.grafo.neighbors(xk)))
+            N -= neighbors
+            S.add(xk)
+            a += 1
+
+        return S, a
+
+
+    def emparelhamento_maximo(self):
+        return nx.algorithms.matching.max_weight_matching(self.grafo)
+        
+        
