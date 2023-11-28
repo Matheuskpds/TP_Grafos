@@ -26,7 +26,8 @@ def menu():
         print("18 - Determinar um conjunto estável de vértices de um grafo por meio de uma heurística")
         print("19 - Determinar Emparelhamento Máximo do Grafo")
         print("20 - Encontrar Ciclo Mínimo do Grafo")
-        print("21 - Encerrar Programa")
+        print("21 - Checar se há ciclos no grafo")
+        print("22 - Encerrar Programa")
         resposta = int(input("Digite a opção desejada: "))
         os.system('cls')
 
@@ -77,9 +78,11 @@ def menu():
         if resposta == 20:
             print("O menor cíclo deste grafo é formado pelas arestas:", Grafo.encontrar_menor_ciclo())
         if resposta == 21:
+            Grafo.encontrar_ciclo()
+        if resposta == 22:
             print("Encerrando programa...")
             loop = False
-        if(resposta > 20 or resposta < 1):
+        if(resposta > 22 or resposta < 1):
             print("Opção inválida, tente novamente!")
         if(resposta != 20):
             aux = str(input("Aperte qualquer tecla para continuar... "))

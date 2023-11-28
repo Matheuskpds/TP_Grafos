@@ -113,3 +113,10 @@ class GrafoPonderado:
         
     def encontrar_menor_ciclo(self):
         return minimum_cycle_basis(self.grafo)
+    
+    def encontrar_ciclo(self):
+        try :
+            nx.find_cycle(self.grafo);
+            print("Há pelo menos um ciclo no grafo");
+        except :
+            print("Não há ciclos no grafo");
