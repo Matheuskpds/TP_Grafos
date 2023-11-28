@@ -111,4 +111,5 @@ class GrafoPonderado:
     def emparelhamento_maximo(self):
         return nx.algorithms.matching.max_weight_matching(self.grafo)
         
-        
+    def encontrar_menor_ciclo(self):
+        return minimum_cycle_basis(self.grafo)

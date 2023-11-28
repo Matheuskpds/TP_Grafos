@@ -25,7 +25,8 @@ def menu():
         print("17 - Árvore Geradora Mínima")
         print("18 - Determinar um conjunto estável de vértices de um grafo por meio de uma heurística")
         print("19 - Determinar Emparelhamento Máximo do Grafo")
-        print("20 - Encerrar Programa")
+        print("20 - Encontrar Ciclo Mínimo do Grafo")
+        print("21 - Encerrar Programa")
         resposta = int(input("Digite a opção desejada: "))
         os.system('cls')
 
@@ -74,6 +75,8 @@ def menu():
         if resposta == 19:
             print("O emparelhamento máximo é formado pelas arestas:", Grafo.emparelhamento_maximo())
         if resposta == 20:
+            print("O menor cíclo deste grafo é formado pelas arestas:", Grafo.encontrar_menor_ciclo())
+        if resposta == 21:
             print("Encerrando programa...")
             loop = False
         if(resposta > 20 or resposta < 1):
