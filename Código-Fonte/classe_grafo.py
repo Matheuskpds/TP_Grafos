@@ -112,7 +112,7 @@ class GrafoPonderado:
         return nx.algorithms.matching.max_weight_matching(self.grafo)
         
     def encontrar_menor_ciclo(self):
-        return minimum_cycle_basis(self.grafo)
+        return nx.minimum_cycle_basis(self.grafo)
     
     def encontrar_ciclo(self):
         try :
