@@ -20,14 +20,12 @@ def menu():
         print("12 - Busca em Lagura")
         print("13 - Distância e Caminho Mínimo")
         print("14 - Centralidade de Proximidade C de um vértice")
-        print("15 - Verificar se o grafo eh um ciclo")
+        print("15 - Verificar se o grafo possui um ciclo")
         print("16 - Encontrar o menor ciclo do grafo")
         print("17 - Árvore Geradora Mínima")
-        print("18 - Determinar um conjunto estável de vértices de um grafo por meio de uma heurística")
+        print("18 - Determinar um conjunto estável de vértices")
         print("19 - Determinar Emparelhamento Máximo do Grafo")
-        print("20 - Encontrar Ciclo Mínimo do Grafo")
-        print("21 - Checar se há ciclos no grafo")
-        print("22 - Encerrar Programa")
+        print("20 - Encerrar Programa")
         resposta = int(input("Digite a opção desejada: "))
         os.system('cls')
 
@@ -67,6 +65,10 @@ def menu():
         if resposta == 14:
             vertice = str(input("Digite um vértice para saber sua centralidade de proximidade: "))
             Grafo.centralidade_proximidade(vertice)
+        if resposta == 15:
+            Grafo.encontrar_ciclo()
+        if resposta == 16:
+            print("O menor cíclo deste grafo é formado pelas arestas:", Grafo.encontrar_menor_ciclo())
         if resposta == 17:
             Grafo.arvore_geradora_minima()
         if resposta == 18:
@@ -76,19 +78,9 @@ def menu():
         if resposta == 19:
             print("O emparelhamento máximo é formado pelas arestas:", Grafo.emparelhamento_maximo())
         if resposta == 20:
-            print("O menor cíclo deste grafo é formado pelas arestas:", Grafo.encontrar_menor_ciclo())
-        if resposta == 21:
-            Grafo.encontrar_ciclo()
-        if resposta == 22:
             print("Encerrando programa...")
             loop = False
-        if(resposta > 22 or resposta < 1):
-            print("Opção inválida, tente novamente!")
         if(resposta != 20):
             aux = str(input("Aperte qualquer tecla para continuar... "))
             os.system('cls')
-
-
-       
-
 menu()

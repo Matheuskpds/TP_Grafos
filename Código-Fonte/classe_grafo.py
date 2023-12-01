@@ -76,16 +76,13 @@ class GrafoPonderado:
         centralidade = (nx.number_of_nodes(self.grafo) - 1) / distanciaTotal
         print("A centralidade de proximidade do vértice " + v + f" é: {centralidade:.4f}")
 
-    #def eh_ciclo(self):
-
-    #def menor_ciclo(self):
-
     def arvore_geradora_minima(self):
         Arvore_Geradora_Minima = nx.minimum_spanning_tree(self.grafo)
-        nx.write_graphml(Arvore_Geradora_Minima, "TP_Grafos/Código-Fonte/Grafos/Arvore_Geradora_Minima.graphml")
+        nx.write_graphml(Arvore_Geradora_Minima, "../TP_Grafos/Código-Fonte/Grafos/Arvore_Geradora_Minima.graphml")
         resposta = str(input("Deseja visualizar a árvore geradora mínima? (S/N)"))
         if (resposta == 'S' or resposta == 's'):
-            Arvore_Geradora_Minima_Graphml = nx.read_graphml("TP_Grafos/Código-Fonte/Grafos/Arvore_Geradora_Minima.graphml")
+            Arvore_Geradora_Minima_Graphml = nx.read_graphml("../TP_Grafos/Código-Fonte/Grafos/Arvore_Geradora_Minima.graphml")
+            print("A soma dos pesos da árvore geradora mínima é ", Arvore_Geradora_Minima.size(weight = "weight"))
             if nx.is_weighted(Arvore_Geradora_Minima_Graphml):
                 self.printar_grafo(Arvore_Geradora_Minima_Graphml)
             else:
@@ -116,7 +113,7 @@ class GrafoPonderado:
     
     def encontrar_ciclo(self):
         try :
-            nx.find_cycle(self.grafo);
-            print("Há pelo menos um ciclo no grafo");
+            nx.find_cycle(self.grafo)
+            print("Há pelo menos um ciclo no grafo")
         except :
-            print("Não há ciclos no grafo");
+            print("Não há ciclos no grafo")
